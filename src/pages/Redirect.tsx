@@ -1,0 +1,28 @@
+import React, { useEffect } from 'react';
+import { useUserContext } from '../contexts/UserContext';
+import { Role } from '../ts/types';
+import { useNavigate } from 'react-router-dom';
+import { getRefreshToken } from '../utils/token';
+
+export const Redirect: React.FC = () => {
+  const navigate = useNavigate();
+  const { user } = useUserContext();
+
+  const refreshToken = getRefreshToken();
+
+  useEffect(() => {
+    if (refreshToken) {
+      if (user.role === Role.ADMIN) {
+        navigate('/admin');
+      } else if (user.role === Role.ACCOUNTANT) {
+        navigate('/accountant');
+      } else if (user.role === Role.SUPER_ADMIN) {
+        navigate('/admin');
+      }
+    } else {
+      navigate('/auth');
+    }
+  }, [refreshToken, user]);
+
+  return <></>;
+};

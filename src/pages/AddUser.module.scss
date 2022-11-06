@@ -1,0 +1,61 @@
+.user {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+
+    &__body {
+        display: grid;
+        flex: 1;
+        grid-template-areas: 'left right';
+        grid-template-columns: 3.4fr 6.6fr;
+        border-radius: 10px;
+        background-color: var(--color-grey-4);
+        padding: 2rem;
+        overflow: hidden;
+    }
+
+    &__left {
+        grid-area: left;
+        border-right: 1px solid var(--color-grey-2);
+        flex-direction: column;
+        overflow-y: scroll;
+        display: flex;
+        padding: 0.5rem;
+
+
+    }
+
+    &__right {
+        grid-area: right;
+        flex-direction: column;
+        padding: 0 2rem 2rem 2rem;
+        overflow-y: scroll;
+    }
+
+    &__dropdown {
+        margin-top: 0.7rem;
+        margin-bottom: 2rem;
+    }
+
+    &__input {
+        gap: 1rem;
+        display: flex;
+        flex-direction: column;
+        margin-top: 0.8rem;
+    }
+
+    &__label {
+        font-size: 1.4rem;
+        color: var(--color-black-2);
+        font-weight: 600;
+        margin-top: 1rem;
+    }
+}
+
+.add_button {
+    width: 100%;
+    margin-top: 2rem;
+    height: 4rem;
+}

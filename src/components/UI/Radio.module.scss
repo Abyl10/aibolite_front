@@ -1,0 +1,49 @@
+.radio {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+
+  &__label {
+    position: relative;
+    cursor: pointer;
+  }
+
+  &__circle {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 2rem;
+    width: 2rem;
+    border-radius: 50%;
+    border: 2px solid var(--color-grey-1);
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 2px;
+      border-radius: 50%;
+    }
+  }
+
+  &:checked + &__circle {
+    border-color: var(--color-light-blue);
+  }
+
+  &:checked + &__circle::after {
+    background-color: var(--color-light-blue);
+  }
+
+  &:checked ~ &__text {
+    color: var(--color-light-blue);
+  }
+
+  &__text {
+    margin-left: 2.5rem;
+    font-size: 1.4rem;
+    line-height: 1.4;
+    font-weight: 800;
+    color: var(--color-grey-1);
+    text-transform: uppercase;
+  }
+}

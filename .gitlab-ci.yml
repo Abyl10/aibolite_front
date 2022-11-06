@@ -1,0 +1,77 @@
+stages:
+  - build
+  - registry
+  - deploy
+
+variables:
+  CONTAINER_VERSION: ${CI_REGISTRY}/${CI_PROJECT_PATH}:develop-$CI_COMMIT_SHORT_SHA
+  CONTAINER_LATEST: ${CI_REGISTRY}/${CI_PROJECT_PATH}:develop
+
+build:
+  resource_group: pipe
+  allow_failure: false
+  stage: build
+  before_script:
+    - npm install
+  script:
+    - CI='' npm run build
+  artifacts:
+    paths:
+      - dist
+    expire_in: 1 hrs
+  tags:
+    - rfid_front_dev_shell
+  except:
+    variables:
+      - $CI_COMMIT_MESSAGE =~ /\[no-build\]/i
+
+docker-registry:
+  resource_group: pipe
+  allow_failure: false
+  timeout: 1h
+  stage: registry
+  before_script:
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+  script:
+    - docker image pull $CONTAINER_LATEST || true
+    - docker build --build-arg --pull -t $CONTAINER_VERSION --cache-from $CONTAINER_LATEST .
+    - docker tag $CONTAINER_VERSION $CONTAINER_LATEST
+    - docker push $CONTAINER_LATEST
+    - docker push $CONTAINER_VERSION
+  only:
+    - main
+    - env/dev
+    - develop
+  tags:
+    - rfid_front_dev_shell
+  except:
+    variables:
+      - $CI_COMMIT_MESSAGE =~ /\[no-registry\]/i
+
+.deploy:
+  stage: deploy
+  resource_group: pipe
+  allow_failure: false
+  before_script:
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+  script:
+    - docker stop ${CI_PROJECT_NAME} || true
+    - docker rm ${CI_PROJECT_NAME} || true
+    - docker rmi -f ${CONTAINER_LATEST} || true
+    - docker run -d -p 127.0.0.1:9000:9000 --name=${CI_PROJECT_NAME} ${CONTAINER_LATEST}
+
+deploy_develop:
+  extends:
+    - .deploy
+  environment:
+    name: develop
+    url: https://cds-wave.csi.kz
+  only:
+    - main
+    - env/dev
+    - develop
+  except:
+    variables:
+      - $CI_COMMIT_MESSAGE =~ /\[no-deploy\]/i
+  tags:
+    - rfid_front_dev_shell
