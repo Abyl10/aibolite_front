@@ -14,10 +14,10 @@ export const Redirect: React.FC = () => {
     if (refreshToken) {
       if (user.role === Role.ADMIN) {
         navigate('/admin');
-      } else if (user.role === Role.ACCOUNTANT) {
-        navigate('/accountant');
-      } else if (user.role === Role.SUPER_ADMIN) {
-        navigate('/admin');
+      } else if (user.role === Role.DOCTOR) {
+        navigate('/profile');
+      } else if (user.role === Role.PATIENT) {
+        navigate('/profile');
       }
     } else {
       navigate('/auth');

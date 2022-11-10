@@ -4,8 +4,10 @@ import globalClasses from '../../assets/sass/base/_base.scss';
 import { Button } from '../UI/Button';
 import { NavLink } from 'react-router-dom';
 import classNames from 'classnames';
+import { useTranslations } from '../../hooks/useTranslations';
 
 export const HomeButtons: React.FC = () => {
+  const { t } = useTranslations();
   const handleProfileButton = () => {};
   const handleAddUserButton = () => {};
   const handleAddCategoryButton = () => {};
@@ -16,7 +18,7 @@ export const HomeButtons: React.FC = () => {
     <div className={classes['buttons']}>
       <Button variant="secondary" onClick={handleProfileButton}>
         <img src="../../assets/icons/profile-dark.svg" alt="Profile icon" />
-        Профиль
+        {t('profile')}
       </Button>
       <NavLink
         to={'/add-user'}
@@ -28,20 +30,20 @@ export const HomeButtons: React.FC = () => {
       >
         <Button variant="secondary" onClick={handleAddUserButton}>
           <img src="../../assets/icons/add-user.svg" alt="Add user icon" />
-          Добавить пользователя
+          {t('add_user')}
         </Button>
       </NavLink>
       <Button variant="secondary" onClick={handleAddCategoryButton}>
         <img src="../../assets/icons/add-icon.svg" alt="Add icon" />
-        Добавить категорию
+        {t('add_patient')}
       </Button>
       <Button variant="secondary" onClick={handleAddItemButton}>
         <img src="../../assets/icons/add-icon.svg" alt="Add icon" />
-        Добавить товар
+        {t('add_doctor')}
       </Button>
       <Button variant="secondary" onClick={handleAddStoreButton}>
         <img src="../../assets/icons/add-icon.svg" alt="Add icon" />
-        Добавить склад
+        {t('add_department')}
       </Button>
     </div>
   );

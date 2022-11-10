@@ -6,7 +6,6 @@ type TokenResponseType = {
   refreshToken: string;
   success: boolean;
   type: string;
-  needToChangePassword: boolean;
 };
 
 const baseURL = '/api/auth';

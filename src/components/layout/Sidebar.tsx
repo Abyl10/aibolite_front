@@ -1,8 +1,9 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import classes from './Sidebar.module.scss';
 import { NavLink, useLocation } from 'react-router-dom';
 import classNames from 'classnames';
 import { useUserContext } from '../../contexts/UserContext';
+import { useTranslations } from '../../hooks/useTranslations';
 
 type SideLink = {
   name: string;
@@ -11,37 +12,37 @@ type SideLink = {
   iconSelected: string;
 };
 
-const sideLinks: SideLink[] = [
-  {
-    name: 'Главная',
-    path: '/',
-    icon: '../../assets/icons/home.svg',
-    iconSelected: '../../assets/icons/home-selected.svg',
-  },
-  {
-    name: 'Заявки',
-    path: '/requests',
-    icon: '../../assets/icons/requests.svg',
-    iconSelected: '../../assets/icons/requests-selected.svg',
-  },
-  {
-    name: 'Склад',
-    path: '/store',
-    icon: '../../assets/icons/store-nav.svg',
-    iconSelected: '../../assets/icons/store-selected.svg',
-  },
-  {
-    name: 'Аналитика',
-    path: '/analytics',
-    icon: '../../assets/icons/analytics.svg',
-    iconSelected: '../../assets/icons/analytics-selected.svg',
-  },
-];
-
 export const Sidebar: React.FC = () => {
+  const { t } = useTranslations();
   const location = useLocation();
   const { user } = useUserContext();
 
+  const sideLinks: SideLink[] = [
+    {
+      name: t('main'),
+      path: '/',
+      icon: '../../assets/icons/home.svg',
+      iconSelected: '../../assets/icons/home-selected.svg',
+    },
+    {
+      name: t('patients'),
+      path: '/requests',
+      icon: '../../assets/icons/requests.svg',
+      iconSelected: '../../assets/icons/requests-selected.svg',
+    },
+    {
+      name: t('doctors'),
+      path: '/store',
+      icon: '../../assets/icons/store-nav.svg',
+      iconSelected: '../../assets/icons/store-selected.svg',
+    },
+    {
+      name: t('departments'),
+      path: '/analytics',
+      icon: '../../assets/icons/analytics.svg',
+      iconSelected: '../../assets/icons/analytics-selected.svg',
+    },
+  ];
   const getLinkPath = (link: SideLink): string =>
     link.path === '/' ? `/${user.role?.toLowerCase()}` : link.path;
 

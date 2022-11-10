@@ -29,14 +29,10 @@ export const Auth: React.FC = () => {
 
   const handleLogin = () => {
     login(user.login, user.password)
-      .then(({ accessToken, refreshToken, needToChangePassword }) => {
-        if (needToChangePassword) {
-          setSteps(2);
-        } else {
-          setTokens(accessToken, refreshToken);
-          getUser();
-          navigate('/');
-        }
+      .then(({ accessToken, refreshToken }) => {
+        setTokens(accessToken, refreshToken);
+        getUser();
+        navigate('/');
       })
       .catch(() => setError('Incorrect email/password'));
   };
