@@ -7,7 +7,7 @@ import ChangePasswordForm from '../components/UI/ChangePasswordForm';
 import { LogoutIcon } from '../assets/icons/js/LogoutIcon';
 import classes from './Profile.module.scss';
 
-const Profile = () => {
+const Profile: React.FC = () => {
   const { user } = useUserContext();
   const { t } = useTranslations();
 
