@@ -2,7 +2,7 @@ import { api } from './api';
 import { IUser } from '../ts/types';
 import { PAGE_SIZE } from '../consts/requests';
 
-const baseURL = '/admin';
+const baseURL = '/api/v1';
 
 type UserResponseType = {
   data: IUser[];

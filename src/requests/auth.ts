@@ -1,17 +1,15 @@
 import axios from 'axios';
+import { api } from './api';
 
 type TokenResponseType = {
-  accessToken: string;
-  msg: string;
-  refreshToken: string;
-  success: boolean;
-  type: string;
+  access: string;
+  refresh: string;
 };
 
-const baseURL = '/api/auth';
+const baseURL = 'http://127.0.0.1:8000/api/v1';
 
-export const login = (login: string, password: string): Promise<TokenResponseType> =>
-  axios.post(`${baseURL}/login`, { login, password }).then((res) => res.data);
+export const login = (username: string, password: string): Promise<TokenResponseType> =>
+  api.post(`${baseURL}/token`, { username, password }).then((res) => res.data);
 
 export const getToken = (refreshToken: string): Promise<TokenResponseType> =>
   axios.post(`${baseURL}/token`, { refreshToken }).then((res) => res.data);

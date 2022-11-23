@@ -29,8 +29,8 @@ export const Auth: React.FC = () => {
 
   const handleLogin = () => {
     login(user.login, user.password)
-      .then(({ accessToken, refreshToken }) => {
-        setTokens(accessToken, refreshToken);
+      .then(({ access, refresh }) => {
+        setTokens(access, refresh);
         getUser();
         navigate('/');
       })

@@ -14,7 +14,7 @@ module.exports = merge(common, {
 
     proxy: {
       '/api': {
-        target: 'https://cds-wave.csi.kz',
+        target: 'http://127.0.0.1:8000',
         secure: false,
       },
     },

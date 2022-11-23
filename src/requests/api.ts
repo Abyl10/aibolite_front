@@ -4,6 +4,10 @@ import { getAccessToken, getRefreshToken, removeTokens, setTokens } from '../uti
 
 export const api = axios.create({
   baseURL: '/api',
+  headers: {
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+  },
 });
 
 api.interceptors.request.use(
@@ -27,9 +31,9 @@ api.interceptors.response.use(
         originalRequest._retry = true;
         return getToken(refreshToken)
           .then((res) => {
-            const { accessToken, refreshToken } = res;
-            setTokens(accessToken, refreshToken);
-            api.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
+            const { access, refresh } = res;
+            setTokens(access, refresh);
+            api.defaults.headers.common['Authorization'] = `Bearer ${access}`;
             return api(originalRequest);
           })
           .catch(() => {
