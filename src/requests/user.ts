@@ -1,9 +1,8 @@
 import { api } from './api';
-import { IUser } from '../ts/types';
 
 const baseURL = '/user';
 
-export const getUserProfile = (): Promise<IUser> =>
+export const getUserProfile = (): Promise<any> =>
   api.get(`${baseURL}/profile`).then((res) => res.data.data);
 
 export type ResetPasswordResponse = {

@@ -6,23 +6,26 @@ import { getRefreshToken } from '../utils/token';
 
 export const Redirect: React.FC = () => {
   const navigate = useNavigate();
-  const { user } = useUserContext();
+  // const { user } = useUserContext();
 
   const refreshToken = getRefreshToken();
 
   useEffect(() => {
+    console.log(refreshToken);
     if (refreshToken) {
-      if (user.role === Role.ADMIN) {
-        navigate('/admin');
-      } else if (user.role === Role.DOCTOR) {
-        navigate('/profile');
-      } else if (user.role === Role.PATIENT) {
-        navigate('/profile');
-      }
-    } else {
-      navigate('/auth');
+      //   if (user.role === Role.ADMIN) {
+      //     navigate('/admin');
+      //   } else if (user.role === Role.DOCTOR) {
+      //     navigate('/profile');
+      //   } else if (user.role === Role.PATIENT) {
+      //     navigate('/profile');
+      //   }
+      // } else {
+      //   navigate('/auth');
+      // }
+      navigate('/admin');
     }
-  }, [refreshToken, user]);
+  }, [refreshToken]);
 
   return <></>;
 };

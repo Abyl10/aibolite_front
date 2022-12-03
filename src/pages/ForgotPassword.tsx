@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import { Button } from '../components/UI/Button';
 import { Input } from '../components/UI/Input';
 import { useTranslations } from '../hooks/useTranslations';
-import { forgotPassword } from '../requests/auth';
 
 import classes from './ForgotPassword.module.scss';
 
@@ -17,11 +16,11 @@ export const ForgotPassword = () => {
     setLogin(e.target.value);
   };
 
-  const handleSendLogin = () => {
-    forgotPassword(login)
-      .then((res) => (res.data ? navigate('/auth') : null))
-      .catch((err) => setError(err));
-  };
+  // const handleSendLogin = () => {
+  //   forgotPassword(login)
+  //     .then((res) => (res.data ? navigate('/auth') : null))
+  //     .catch((err) => setError(err));
+  // };
 
   return (
     <div className={classes['password']}>
@@ -33,7 +32,13 @@ export const ForgotPassword = () => {
         </video>
       </div>
       <Input name="login" value={login} onChange={handleLoginChange} label={t('username')} />
-      <Button variant="primary" onClick={handleSendLogin} className={classes['password__btn']}>
+      <Button
+        variant="primary"
+        onClick={() => {
+          return;
+        }}
+        className={classes['password__btn']}
+      >
         {t('send')}
       </Button>
       {error && <p className={classes['password__error']}>{error}</p>}

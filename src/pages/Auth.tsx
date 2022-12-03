@@ -5,33 +5,30 @@ import { Input } from '../components/UI/Input';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { Radio } from '../components/UI/Radio';
 import { login } from '../requests/auth';
-import { getRefreshToken, removeTokens, setTokens } from '../utils/token';
+import { getAccessToken, getRefreshToken, removeTokens, setTokens } from '../utils/token';
 import { useUserContext } from '../contexts/UserContext';
 import { useTranslations } from '../hooks/useTranslations';
-import ChangePasswordForm from '../components/UI/ChangePasswordForm';
 
 type LoginUserType = {
-  login: string;
+  phone: string;
   password: string;
 };
 
 export const Auth: React.FC = () => {
   const navigate = useNavigate();
-  const { getUser } = useUserContext();
+  // const { getUser } = useUserContext();
   const { t } = useTranslations();
-  const [steps, setSteps] = useState<number>(1);
 
-  const [user, setUser] = useState<LoginUserType>({ login: '', password: '' });
+  const [user, setUser] = useState<LoginUserType>({ phone: '', password: '' });
   const [error, setError] = useState<string>('');
   const [rememberUser, setRememberUser] = useState<boolean>(
     Boolean(localStorage.getItem('REMEMBER_USER')) || false
   );
 
   const handleLogin = () => {
-    login(user.login, user.password)
+    login(user.phone, user.password)
       .then(({ access, refresh }) => {
         setTokens(access, refresh);
-        getUser();
         navigate('/');
       })
       .catch(() => setError('Incorrect email/password'));
@@ -71,48 +68,34 @@ export const Auth: React.FC = () => {
           Does not support video
         </video>
       </div>
-      {steps === 1 ? (
-        <>
-          <Input
-            name="login"
-            value={user.login}
-            onChange={handleInputChange}
-            label={t('username')}
+
+      <>
+        <Input name="phone" value={user.phone} onChange={handleInputChange} label={t('username')} />
+        <Input
+          name="password"
+          value={user.password}
+          onChange={handleInputChange}
+          label={t('password')}
+          type="password"
+          onKeyPress={handleKeyPress}
+        />
+        <div className={classes['auth__options']}>
+          <Radio
+            checked={rememberUser}
+            onClick={handleRememberUser}
+            name="remember-user"
+            label={t('remember_me')}
+            className={classes['auth__remember-user']}
           />
-          <Input
-            name="password"
-            value={user.password}
-            onChange={handleInputChange}
-            label={t('password')}
-            type="password"
-            onKeyPress={handleKeyPress}
-          />
-          <div className={classes['auth__options']}>
-            <Radio
-              checked={rememberUser}
-              onClick={handleRememberUser}
-              name="remember-user"
-              label={t('remember_me')}
-              className={classes['auth__remember-user']}
-            />
-            <NavLink to={'/forgot-password'} className={classes['auth__forgot-password']}>
-              {t('forgot_password')}
-            </NavLink>
-          </div>
-          {error && <p className={classes['auth__error']}>{error}</p>}
-          <Button variant="primary" onClick={handleLogin} className={classes['auth__btn']}>
-            {t('login')}
-          </Button>
-          <div className={classes['auth__noAccount__container']}>
-            <p className={classes['auth__noAccount__text']}>{t('no_account')}</p>
-            <NavLink to={'/register'} className={classes['auth__noAccount__link']}>
-              {t('register')}
-            </NavLink>
-          </div>
-        </>
-      ) : (
-        <ChangePasswordForm isTemporaryPassword={true} returnBack={() => setSteps(1)} />
-      )}
+          <NavLink to={'/forgot-password'} className={classes['auth__forgot-password']}>
+            {t('forgot_password')}
+          </NavLink>
+        </div>
+        {error && <p className={classes['auth__error']}>{error}</p>}
+        <Button variant="primary" onClick={handleLogin} className={classes['auth__btn']}>
+          {t('login')}
+        </Button>
+      </>
     </div>
   );
 };

@@ -1,9 +1,10 @@
 import React from 'react';
-import { Admin } from '../pages/Admin';
+
 import { Settings } from '../pages/Settings';
 import { Role } from '../ts/types';
 import { Redirect } from '../pages/Redirect';
 import Profile from '../pages/Profile';
+import Admin from '../pages/Admin';
 
 type IRoute = {
   name: string;

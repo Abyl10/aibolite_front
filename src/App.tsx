@@ -9,11 +9,11 @@ import { Register } from './pages/Register';
 import { ForgotPassword } from './pages/ForgotPassword';
 
 export const App: React.FC = () => {
-  const { user, getUser } = useUserContext();
+  // const { user, getUser } = useUserContext();
 
-  useEffect(() => {
-    getUser();
-  }, []);
+  // useEffect(() => {
+  //   getUser();
+  // }, []);
 
   return (
     <Routes>
@@ -22,10 +22,11 @@ export const App: React.FC = () => {
       <Route path="/forgot-password" element={<ForgotPassword />} />
       <Route path="/" element={<Layout />}>
         {ROUTES.map(
-          (route) =>
-            route.roles.find((role) => role === user.role) && (
-              <Route key={route.path} path={route.path} element={route.component} />
-            )
+          (route) => (
+            // route.roles.find((role) => role === user.role) && (
+            <Route key={route.path} path={route.path} element={route.component} />
+          )
+          // )
         )}
         <Route path="*" element={<Redirect />} />
       </Route>

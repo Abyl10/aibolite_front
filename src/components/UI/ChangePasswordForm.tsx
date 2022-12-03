@@ -5,7 +5,6 @@ import { useTranslations } from '../../hooks/useTranslations';
 import { Input } from './Input';
 import { Button } from './Button';
 import { removeTokens, setTokens } from '../../utils/token';
-import { changePassword } from '../../requests/auth';
 import { resetPassword, ResetPasswordResponse } from '../../requests/user';
 import classes from './ChangePasswordForm.module.scss';
 

@@ -4,10 +4,6 @@ import { getAccessToken, getRefreshToken, removeTokens, setTokens } from '../uti
 
 export const api = axios.create({
   baseURL: '/api',
-  headers: {
-    'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
-  },
 });
 
 api.interceptors.request.use(
