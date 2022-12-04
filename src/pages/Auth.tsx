@@ -62,7 +62,11 @@ export const Auth: React.FC = () => {
   return (
     <div className={classes['auth']}>
       <div className={classes['video__wrapper']}>
-        <img src="../assets/icons/logo-horizontal.svg" alt="Logo" className={classes['logo']} />
+        <img
+          src={require('../assets/icons/aibolit-logo-white.png')}
+          alt="Logo"
+          className={classes['logo']}
+        />
         <video className={classes['video']} autoPlay loop>
           <source src="../assets/img/wave-2.gif.mp4" type="video/mp4" />
           Does not support video

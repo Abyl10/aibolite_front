@@ -57,6 +57,54 @@ export const DepartmentsData = [
   },
 ];
 
+export const SpecializationsHeader = {
+  id: 'id',
+  name: 'Name',
+};
+
+export const SpecializationsData = [
+  {
+    id: 1,
+    name: 'Cardiologist',
+  },
+  {
+    id: 2,
+    name: 'Neurologist',
+  },
+  {
+    id: 3,
+    name: 'Oncologist',
+  },
+  {
+    id: 4,
+    name: 'Pediatrician',
+  },
+  {
+    id: 5,
+    name: 'Gynecologist',
+  },
+  {
+    id: 6,
+    name: 'Dermatologist',
+  },
+  {
+    id: 7,
+    name: 'Ophthalmologist',
+  },
+  {
+    id: 8,
+    name: 'Urologist',
+  },
+  {
+    id: 9,
+    name: 'Orthopedist',
+  },
+  {
+    id: 10,
+    name: 'Gastroenterologist',
+  },
+];
+
 export const DoctorData = [
   {
     id: 1,

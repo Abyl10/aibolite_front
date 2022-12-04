@@ -151,4 +151,10 @@ export const TRANSLATIONS: ITranslation[] = [
     ru: 'Адрес',
     en: 'Address',
   },
+  {
+    key: 'specializations',
+    kz: 'Мамандықтар',
+    ru: 'Специализации',
+    en: 'Specializations',
+  },
 ];

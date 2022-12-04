@@ -14,12 +14,13 @@ const useStyles = createStyles((theme) => ({
 interface IProps {
   data: any;
   headers: any;
+  nameofHeader: string;
 }
 
-const ReusableTable: React.FC<IProps> = ({ data, headers }) => {
+const ReusableTable: React.FC<IProps> = ({ data, headers, nameofHeader }) => {
   const { t } = useTranslations();
   const { classes } = useStyles();
-  const [currentPage, setCurrentPage] = useState<number>(0);
+  const [currentPage, setCurrentPage] = useState<number>(1);
   const total = 5;
   const mxPage = Math.ceil(data.length / total);
 
@@ -30,7 +31,7 @@ const ReusableTable: React.FC<IProps> = ({ data, headers }) => {
   return (
     <main className={cx['table']}>
       <div className={cx['table__header']}>
-        <h2 className={cx['table__title']}>Departments</h2>
+        <h2 className={cx['table__title']}>{t(nameofHeader)}</h2>
       </div>
       <Table highlightOnHover fontSize={'xs'} className={classes.tableHeader}>
         <thead>

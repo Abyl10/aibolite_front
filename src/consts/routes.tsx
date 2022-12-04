@@ -6,6 +6,8 @@ import { Redirect } from '../pages/Redirect';
 import Profile from '../pages/Profile';
 import Admin from '../pages/Admin';
 import Departments from '../pages/Departments';
+import Specializations from '../pages/Specializations';
+import Doctors from '../pages/Doctors';
 
 type IRoute = {
   name: string;
@@ -22,7 +24,7 @@ export const ROUTES: IRoute[] = [
     roles: [Role.ADMIN, Role.DOCTOR, Role.PATIENT],
   },
   {
-    name: 'home',
+    name: 'patients',
     path: '/patients',
     component: <Admin />,
     roles: [Role.ADMIN, Role.DOCTOR, Role.PATIENT],
@@ -44,6 +46,18 @@ export const ROUTES: IRoute[] = [
     name: 'departments',
     path: '/departments',
     component: <Departments />,
+    roles: [Role.ADMIN, Role.DOCTOR, Role.PATIENT],
+  },
+  {
+    name: 'specializations',
+    path: '/specializations',
+    component: <Specializations />,
+    roles: [Role.ADMIN, Role.DOCTOR, Role.PATIENT],
+  },
+  {
+    name: 'doctors',
+    path: '/doctors',
+    component: <Doctors />,
     roles: [Role.ADMIN, Role.DOCTOR, Role.PATIENT],
   },
 ];

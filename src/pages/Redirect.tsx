@@ -23,7 +23,7 @@ export const Redirect: React.FC = () => {
       // } else {
       //   navigate('/auth');
       // }
-      navigate('/admin');
+      navigate('/patients');
     }
   }, [refreshToken]);
 

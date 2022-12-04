@@ -19,12 +19,6 @@ export const Sidebar: React.FC = () => {
 
   const sideLinks: SideLink[] = [
     {
-      name: t('main'),
-      path: '/',
-      icon: '../../assets/icons/home.svg',
-      iconSelected: '../../assets/icons/home-selected.svg',
-    },
-    {
       name: t('patients'),
       path: '/patients',
       icon: '../../assets/icons/requests.svg',
@@ -42,6 +36,12 @@ export const Sidebar: React.FC = () => {
       icon: '../../assets/icons/analytics.svg',
       iconSelected: '../../assets/icons/analytics-selected.svg',
     },
+    {
+      name: t('specializations'),
+      path: '/specializations',
+      icon: '../../assets/icons/home.svg',
+      iconSelected: '../../assets/icons/home-selected.svg',
+    },
   ];
   const getLinkPath = (link: SideLink): string =>
     link.path === '/' ? `/${user.role?.toLowerCase()}` : link.path;
@@ -51,7 +51,7 @@ export const Sidebar: React.FC = () => {
       <NavLink to={'/'}>
         <img
           className={classes['side__logo']}
-          src="../../assets/icons/./logo-vertical.svg"
+          src={require('../../assets/icons/aibolit-logo-white.png')}
           alt="Logo"
         />
       </NavLink>
