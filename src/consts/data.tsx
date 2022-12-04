@@ -1,6 +1,6 @@
 import { Role } from '../ts/types';
 
-export const DoctorHeader = {
+export const PatientHeader = {
   name: 'Name',
   phone: 'Phone',
   dateofbirth: 'Date of birth',
@@ -8,6 +8,54 @@ export const DoctorHeader = {
   IIN: 'IIN',
   id: 'ID',
 };
+
+export const DepartmentsHeader = {
+  id: 'id',
+  name: 'Name',
+};
+
+export const DepartmentsData = [
+  {
+    id: 1,
+    name: 'Cardiology',
+  },
+  {
+    id: 2,
+    name: 'Neurology',
+  },
+  {
+    id: 3,
+    name: 'Oncology',
+  },
+  {
+    id: 4,
+    name: 'Pediatrics',
+  },
+  {
+    id: 5,
+    name: 'Gynecology',
+  },
+  {
+    id: 6,
+    name: 'Dermatology',
+  },
+  {
+    id: 7,
+    name: 'Ophthalmology',
+  },
+  {
+    id: 8,
+    name: 'Urology',
+  },
+  {
+    id: 9,
+    name: 'Orthopedics',
+  },
+  {
+    id: 10,
+    name: 'Gastroenterology',
+  },
+];
 
 export const DoctorData = [
   {

@@ -1,0 +1,25 @@
+.pagination {
+  &__wrapper {
+    display: flex;
+    justify-content: center;
+    padding: 4px;
+    gap: 4px;
+    font-size: 1.2rem;
+    margin-top: 3rem;
+  }
+
+  &__button {
+    background-color: var(--color-grey-4);
+    border: 2px solid var(--color-grey-1);
+    color: var(--color-grey-1);
+    border-radius: 50%;
+    height: 24px;
+    width: 24px;
+
+    &--active {
+      background-color: var(--color-light-blue);
+      border: 2px solid var(--color-light-blue);
+      color: var(--color-white);
+    }
+  }
+}

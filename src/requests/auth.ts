@@ -6,10 +6,11 @@ type TokenResponseType = {
   refresh: string;
 };
 
-const baseURL = 'http://127.0.0.1:8000/api/v2/client';
+// const baseURL = 'http://127.0.0.1:8000/api/v2/client';
+const baseURL = '/api/v2/client';
 
 export const login = (phone: string, password: string): Promise<TokenResponseType> =>
-  api.post(`${baseURL}/token`, { phone, password }).then((res) => res.data);
+  axios.post(`${baseURL}/token`, { phone, password }).then((res) => res.data);
 
 export const getToken = (refreshToken: string): Promise<TokenResponseType> =>
   axios.post(`${baseURL}/token/refresh`, { refreshToken }).then((res) => res.data);

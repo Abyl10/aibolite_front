@@ -1,0 +1,14 @@
+.table {
+  &__title {
+    font-size: 3rem;
+    font-weight: 600;
+    color: #000;
+    margin-bottom: 1rem;
+  }
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+  }
+}

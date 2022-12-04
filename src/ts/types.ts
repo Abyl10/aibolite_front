@@ -15,15 +15,18 @@ export interface ITranslation {
 }
 
 export interface IPatient {
-  id: number;
+  id?: number;
+  iin_number: string;
+  id_number: string;
   name: string;
   surname: string;
-  phone: string;
-  birthDate: string;
-  IIN: string;
-  address: string;
+  middle_name: string;
+  blood_group: string;
+  emergency_contact_number: string;
   email: string;
-  password: string;
-  confirmPassword: string;
-  role: Role;
+  address: string;
+  marital_status: string;
+  registration_date?: string;
+  birth_date: string;
+  phone: string;
 }

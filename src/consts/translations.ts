@@ -115,4 +115,40 @@ export const TRANSLATIONS: ITranslation[] = [
     ru: 'Выйти',
     en: 'Logout',
   },
+  {
+    key: 'name',
+    kz: 'Аты',
+    ru: 'Имя',
+    en: 'Name',
+  },
+  {
+    key: 'phone',
+    kz: 'Телефон',
+    ru: 'Телефон',
+    en: 'Phone',
+  },
+  {
+    key: 'dateofbirth',
+    kz: 'Туған күні',
+    ru: 'Дата рождения',
+    en: 'Date of birth',
+  },
+  {
+    key: 'email',
+    kz: 'Электрондық пошта',
+    ru: 'Электронная почта',
+    en: 'Email',
+  },
+  {
+    key: 'iin',
+    kz: 'ИИН',
+    ru: 'ИИН',
+    en: 'IIN',
+  },
+  {
+    key: 'address',
+    kz: 'Мекен-жайы',
+    ru: 'Адрес',
+    en: 'Address',
+  },
 ];

@@ -26,19 +26,19 @@ export const Sidebar: React.FC = () => {
     },
     {
       name: t('patients'),
-      path: '/requests',
+      path: '/patients',
       icon: '../../assets/icons/requests.svg',
       iconSelected: '../../assets/icons/requests-selected.svg',
     },
     {
       name: t('doctors'),
-      path: '/store',
+      path: '/doctors',
       icon: '../../assets/icons/store-nav.svg',
       iconSelected: '../../assets/icons/store-selected.svg',
     },
     {
       name: t('departments'),
-      path: '/analytics',
+      path: '/departments',
       icon: '../../assets/icons/analytics.svg',
       iconSelected: '../../assets/icons/analytics-selected.svg',
     },
