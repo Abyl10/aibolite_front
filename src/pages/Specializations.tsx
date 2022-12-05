@@ -1,5 +1,5 @@
 import React from 'react';
-import ReusableTable from '../components/UI/Tables/ReusableTable';
+import ReusableTable from '../components/UI/Tables/ReusableTableWithSearch';
 import { SpecializationsHeader, SpecializationsData } from '../consts/data';
 
 const Specializations = () => {

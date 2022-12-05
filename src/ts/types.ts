@@ -30,3 +30,46 @@ export interface IPatient {
   birth_date: string;
   phone: string;
 }
+
+export interface IDoctor {
+  id?: number;
+  iin_number: string;
+  id_number: string;
+  name: string;
+  surname: string;
+  middle_name: string;
+  department_id: number;
+  specialization_details_id: number;
+  experience_years: number;
+  photo: string;
+  category: string;
+  price_per_appointment: number;
+  schedule_details: string;
+  degree: string;
+  rating: number;
+  address: string;
+  homepage_url: string;
+  registration_date?: string;
+  birth_date: string;
+  phone: string;
+}
+
+export interface IUser {
+  id?: number;
+  phone: string;
+  birth_date: string;
+  role: Role;
+  name: string;
+  surname: string;
+  middle_name: string;
+}
+
+export interface IAppointment {
+  id?: number;
+  name: string;
+  surname: string;
+  doctor_specialization: string;
+  doctor: string;
+  contact: string;
+  date: string;
+}

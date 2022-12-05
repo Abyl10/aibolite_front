@@ -157,4 +157,58 @@ export const TRANSLATIONS: ITranslation[] = [
     ru: 'Специализации',
     en: 'Specializations',
   },
+  {
+    key: 'appointments',
+    kz: 'Жазылымдар',
+    ru: 'Записи',
+    en: 'Appointments',
+  },
+  {
+    key: 'surname',
+    kz: 'Тегі',
+    ru: 'Фамилия',
+    en: 'Surname',
+  },
+  {
+    key: 'doctor',
+    kz: 'Доктор',
+    ru: 'Доктор',
+    en: 'Doctor',
+  },
+  {
+    key: 'appointment_date',
+    kz: 'Жазылым күні',
+    ru: 'Дата записи',
+    en: 'Appointment date',
+  },
+  {
+    key: 'add_patient',
+    kz: 'Пациент қосу',
+    ru: 'Добавить пациента',
+    en: 'Add patient',
+  },
+  {
+    key: 'add_doctor',
+    kz: 'Доктор қосу',
+    ru: 'Добавить доктора',
+    en: 'Add doctor',
+  },
+  {
+    key: 'create_appointment',
+    kz: 'Жазылым құру',
+    ru: 'Создать запись',
+    en: 'Create appointment',
+  },
+  {
+    key: 'time',
+    kz: 'Уақыт',
+    ru: 'Время',
+    en: 'Time',
+  },
+  {
+    key: 'patient',
+    kz: 'Пациент',
+    ru: 'Пациент',
+    en: 'Patient',
+  },
 ];

@@ -1,9 +1,10 @@
 import { api } from './api';
+import { IUser } from '../ts/types';
 
-const baseURL = '/user';
+const baseURL = '/v2/client';
 
-export const getUserProfile = (): Promise<any> =>
-  api.get(`${baseURL}/profile`).then((res) => res.data.data);
+export const getUserProfile = (): Promise<IUser> =>
+  api.get(`${baseURL}/profile`).then((res) => res.data);
 
 export type ResetPasswordResponse = {
   success: boolean;

@@ -3,7 +3,7 @@ import CustomTableUser from '../components/UI/Tables/CustomTableUser';
 import { getPatient, getPatients } from '../requests/patients';
 import { IPatient } from '../ts/types';
 
-const Admin = () => {
+const Patients = () => {
   const [patients, setPatients] = useState<IPatient[]>([]);
 
   useEffect(() => {
@@ -19,4 +19,4 @@ const Admin = () => {
   );
 };
 
-export default Admin;
+export default Patients;

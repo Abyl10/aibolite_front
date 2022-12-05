@@ -4,28 +4,13 @@ import { getRefreshToken } from '../utils/token';
 import { getUserProfile } from '../requests/user';
 
 const initialUserState: IUser = {
-  active: false,
-  email: '',
-  firstName: '',
   id: 0,
-  iin: '',
-  lastName: '',
-  locale: '',
-  notify: false,
-  orgId: 0,
-  organization: {
-    active: false,
-    bin: '',
-    description: '',
-    email: '',
-    factAddress: '',
-    id: 0,
-    legalAddress: '',
-    name: '',
-    phones: '',
-  },
-  phoneNumber: '',
+  phone: '',
+  birth_date: '',
   role: Role.GUEST,
+  name: '',
+  surname: '',
+  middle_name: '',
 };
 
 type ContextType = {

@@ -24,6 +24,7 @@ import { useForm } from '@mantine/form';
 import { useDisclosure } from '@mantine/hooks';
 import { IconEyeCheck, IconEyeOff, IconX, IconCheck } from '@tabler/icons';
 import { createPatient } from '../../../requests/patients';
+import { useTranslations } from '../../../hooks/useTranslations';
 
 const useStyles = createStyles((theme) => ({
   inOneRow: {
@@ -74,6 +75,7 @@ interface IProps {
 }
 
 const PatientModal: React.FC<IProps> = ({ opened, handleToggle }) => {
+  const { t } = useTranslations();
   const [popoverOpened, setPopoverOpened] = useState(false);
   const [visible, { toggle }] = useDisclosure(false);
   const [value, setValue] = useState('');
@@ -465,7 +467,7 @@ const PatientModal: React.FC<IProps> = ({ opened, handleToggle }) => {
       </Modal>
       <Group position="center">
         <Button size="xs" onClick={handleRegisterClick}>
-          Add Patient
+          {t('add_patient')}
         </Button>
       </Group>
     </>

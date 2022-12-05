@@ -25,8 +25,8 @@ export const Sidebar: React.FC = () => {
       iconSelected: '../../assets/icons/requests-selected.svg',
     },
     {
-      name: t('doctors'),
-      path: '/doctors',
+      name: t('appointments'),
+      path: '/appointments',
       icon: '../../assets/icons/store-nav.svg',
       iconSelected: '../../assets/icons/store-selected.svg',
     },

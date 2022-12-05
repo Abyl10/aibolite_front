@@ -17,7 +17,7 @@ interface IProps {
   nameofHeader?: string;
 }
 
-const ReusableTable: React.FC<IProps> = ({ data, headers, nameofHeader }) => {
+const ReusableTableWithSearch: React.FC<IProps> = ({ data, headers, nameofHeader }) => {
   const { t } = useTranslations();
   const { classes } = useStyles();
   const [currentPage, setCurrentPage] = useState<number>(1);
@@ -44,9 +44,8 @@ const ReusableTable: React.FC<IProps> = ({ data, headers, nameofHeader }) => {
         <tbody>
           {data.slice(currentPage * 5 - 5, 5 * (currentPage + 1) - 5).map((item: any) => (
             <tr key={item.id} onClick={() => handleTableClick(item.id)}>
-              <td>{item.time}</td>
-              <td>{item.patient.name}</td>
-              <td>{item.doctor.name}</td>
+              <td>{item.id}</td>
+              <td>{item.name}</td>
             </tr>
           ))}
         </tbody>
@@ -60,4 +59,4 @@ const ReusableTable: React.FC<IProps> = ({ data, headers, nameofHeader }) => {
   );
 };
 
-export default ReusableTable;
+export default ReusableTableWithSearch;

@@ -133,3 +133,9 @@ export const DoctorData = [
     role: Role.DOCTOR,
   },
 ];
+
+export const AppointmentHeader = {
+  time: 'time',
+  patient: 'Patient',
+  doctor: 'Doctor',
+};
