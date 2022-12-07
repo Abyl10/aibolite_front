@@ -247,4 +247,16 @@ export const TRANSLATIONS: ITranslation[] = [
     kz: 'Болдырмау',
     en: 'Cancel',
   },
+  {
+    key: 'add_doctor',
+    ru: 'Добавить доктора',
+    kz: 'Доктор қосу',
+    en: 'Add doctor',
+  },
+  {
+    key: 'register_doctor',
+    ru: 'Зарегистрировать доктора',
+    kz: 'Докторды тіркелту',
+    en: 'Register doctor',
+  },
 ];

@@ -60,6 +60,7 @@
     "@emotion/react": "^11.10.5",
     "@mantine/core": "^5.8.3",
     "@mantine/dates": "^5.8.3",
+    "@mantine/dropzone": "^5.9.2",
     "@mantine/form": "^5.9.0",
     "@mantine/hooks": "^5.8.3",
     "@mantine/modals": "^5.8.3",
