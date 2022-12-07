@@ -1,0 +1,30 @@
+.modal {
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    &__title {
+      font-size: 2rem;
+      flex: 1;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+  }
+  &__footer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-top: 3rem;
+    gap: 3rem;
+    &__cancel {
+      font-weight: 500;
+      font-size: 1.4rem;
+      line-height: 1.9rem;
+      font-family: var(--ff-primary);
+      color: var(--color-grey-6);
+      cursor: pointer;
+    }
+  }
+}

@@ -36,7 +36,7 @@ const ProfileCard: React.FC<Props> = ({ handleClose, targetId }) => {
     <div className={classes['wrapper']} ref={wrapperRef} id={'profile__wrapper'}>
       <div className={classes['header__profile']} onClick={handleClose}>
         <div className={classes['profile__info']}>
-          <div className={classes['profile__name']}>{`${user.firstName} ${user.lastName}`}</div>
+          <div className={classes['profile__name']}>{`${user.name} ${user.surname}`}</div>
           <div className={classes['profile__role']}>{user.role || ADMIN}</div>
         </div>
         <img

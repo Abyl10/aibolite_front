@@ -43,6 +43,34 @@ export const Sidebar: React.FC = () => {
       iconSelected: '../../assets/icons/home-selected.svg',
     },
   ];
+
+  const sideLinksPatient: SideLink[] = [
+    {
+      name: t('doctors'),
+      path: '/doctors',
+      icon: '../../assets/icons/requests.svg',
+      iconSelected: '../../assets/icons/requests-selected.svg',
+    },
+    {
+      name: t('appointments'),
+      path: '/appointments',
+      icon: '../../assets/icons/store-nav.svg',
+      iconSelected: '../../assets/icons/store-selected.svg',
+    },
+    {
+      name: t('departments'),
+      path: '/departments',
+      icon: '../../assets/icons/analytics.svg',
+      iconSelected: '../../assets/icons/analytics-selected.svg',
+    },
+    {
+      name: t('specializations'),
+      path: '/specializations',
+      icon: '../../assets/icons/home.svg',
+      iconSelected: '../../assets/icons/home-selected.svg',
+    },
+  ];
+
   const getLinkPath = (link: SideLink): string =>
     link.path === '/' ? `/${user.role?.toLowerCase()}` : link.path;
 

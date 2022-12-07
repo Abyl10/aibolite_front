@@ -1,0 +1,33 @@
+.portal {
+    position: absolute;
+    z-index: 52;
+  }
+  
+  .modal {
+    position: relative;
+    cursor: pointer;
+    &__child {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 51;
+    }
+    &__header {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 1rem;
+      font-size: 1.8rem;
+      font-weight: 700;
+      line-height: 2.5rem;
+      padding: 0.8rem;
+    }
+  
+    &__icon {
+      width: 2.5rem;
+      height: 2.5rem;
+    }
+  
+  }
+  

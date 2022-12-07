@@ -23,7 +23,7 @@ const Appointments = () => {
     getAppointments().then((res) => {
       setAppointments(res);
     });
-  });
+  }, []);
 
   return (
     <main>

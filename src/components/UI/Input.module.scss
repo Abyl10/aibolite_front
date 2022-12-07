@@ -11,6 +11,14 @@
   color: rgba(#000, 0.8);
   font-weight: 500;
 
+  &--primary {
+    border: 1px solid var(--color-light-blue);
+    border-radius: 10px;
+    height: 4rem;
+    font-size: 1.4rem;
+    padding-left: 2rem;
+  }
+
   &--error {
     border: 2px solid var(--color-red);
     height: 5rem;
@@ -51,6 +59,7 @@
     font-size: 1.4rem;
     color: var(--color-black-2);
     font-weight: 600;
+    margin-top: 1rem;
   }
 
   &__wrapper {

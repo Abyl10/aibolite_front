@@ -13,6 +13,8 @@ type PropsType = {
   onBlur?: () => void;
   onFocus?: () => void;
   error?: boolean;
+  placeholder?: string;
+  variant?: string;
 };
 
 export const Input: React.FC<PropsType> = ({
@@ -26,6 +28,8 @@ export const Input: React.FC<PropsType> = ({
   onBlur,
   onFocus,
   error,
+  placeholder,
+  variant,
 }) => {
   const inputRef = useRef<HTMLInputElement | null>(null);
 
@@ -46,13 +50,17 @@ export const Input: React.FC<PropsType> = ({
         <input
           ref={inputRef}
           type={type}
-          className={classes[`input${error ? '--error' : ''}`]}
+          className={classNames(
+            classes[`input${error ? '--error' : ''}`],
+            classes[`input--${variant}`]
+          )}
           value={value}
           name={name}
           onChange={onChange}
           onKeyDown={onKeyPress && ((event) => onKeyPress(event))}
           onFocus={onFocus}
           onBlur={onBlur}
+          placeholder={placeholder}
         />
         {type === 'password' && (
           <img

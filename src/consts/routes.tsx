@@ -47,13 +47,13 @@ export const ROUTES: IRoute[] = [
     name: 'departments',
     path: '/departments',
     component: <Departments />,
-    roles: [Role.ADMIN, Role.DOCTOR, Role.PATIENT],
+    roles: [Role.ADMIN, Role.DOCTOR],
   },
   {
     name: 'specializations',
     path: '/specializations',
     component: <Specializations />,
-    roles: [Role.ADMIN, Role.DOCTOR, Role.PATIENT],
+    roles: [Role.ADMIN, Role.DOCTOR],
   },
   {
     name: 'doctors',

@@ -73,3 +73,9 @@ export interface IAppointment {
   contact: string;
   date: string;
 }
+
+export interface IDepartment {
+  id?: number;
+  name: string;
+  doctors: IDoctor[];
+}

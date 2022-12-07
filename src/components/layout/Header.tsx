@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import classes from './Header.module.scss';
 import { useUserContext } from '../../contexts/UserContext';
 import { ADMIN } from '../../consts/enums';
@@ -8,13 +8,32 @@ import { useTranslations } from '../../hooks/useTranslations';
 import { SelectLanguage } from './SelectLanguage';
 import ProfileCard from '../UI/ProfileCard';
 import DropdownPortal from '../UI/DropdownPortal';
+import { getUserProfile } from '../../requests/user';
+import { IUser, Role } from '../../ts/types';
+
+const initialUserState: IUser = {
+  id: 0,
+  phone: '',
+  birth_date: '',
+  role: Role.GUEST,
+  name: '',
+  surname: '',
+  middle_name: '',
+};
 
 export const Header: React.FC = () => {
   const { user } = useUserContext();
   const { t } = useTranslations();
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [userProfile, setUserProfile] = useState<IUser>(initialUserState);
 
   const { pathname } = useLocation();
+
+  useEffect(() => {
+    getUserProfile().then((res) => {
+      setUserProfile(res);
+    });
+  }, []);
 
   const headerName: string = useMemo(
     () => ROUTES.find((route) => route.path === pathname)?.name || 'home',
@@ -37,8 +56,10 @@ export const Header: React.FC = () => {
         onClick={() => handleToggleDropdown()}
       >
         <div className={classes['profile__info']}>
-          <div className={classes['profile__name']}>{`${user.firstName} ${user.lastName}`}</div>
-          <div className={classes['profile__role']}>{user.role || ADMIN}</div>
+          <div
+            className={classes['profile__name']}
+          >{`${userProfile.name} ${userProfile.surname}`}</div>
+          <div className={classes['profile__role']}>{userProfile.role || ADMIN}</div>
         </div>
         <img
           src="../assets/icons/profile-header.svg"

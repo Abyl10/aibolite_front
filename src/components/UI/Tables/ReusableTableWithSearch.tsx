@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Table, createStyles, Pagination, Center } from '@mantine/core';
 import cx from './CustomTableUser.module.scss';
 import { useTranslations } from '../../../hooks/useTranslations';
+import { IDepartment, IDoctor } from '../../../ts/types';
+import ModalDoctorDepartment from '../Modals/ModalDoctorDepartment';
 
 const useStyles = createStyles((theme) => ({
   tableHeader: {
@@ -21,12 +23,22 @@ const ReusableTableWithSearch: React.FC<IProps> = ({ data, headers, nameofHeader
   const { t } = useTranslations();
   const { classes } = useStyles();
   const [currentPage, setCurrentPage] = useState<number>(1);
+  const [doctors, setDoctors] = useState<IDoctor[]>([]);
+  const [selectedId, setSelectedId] = useState<number>();
   const total = 5;
   const mxPage = Math.ceil(data.length / total);
 
   const handleTableClick = (id: number) => {
-    console.log(id);
+    setSelectedId(id);
   };
+
+  useEffect(() => {
+    data.map((item: IDepartment) => {
+      if (item.id === selectedId) {
+        setDoctors(item.doctors);
+      }
+    });
+  }, [selectedId]);
 
   return (
     <main className={cx['table']}>
@@ -55,6 +67,9 @@ const ReusableTableWithSearch: React.FC<IProps> = ({ data, headers, nameofHeader
           <Pagination page={currentPage} onChange={setCurrentPage} total={mxPage} />
         )}
       </Center>
+      {selectedId && (
+        <ModalDoctorDepartment handleToggle={() => setSelectedId(undefined)} values={doctors} />
+      )}
     </main>
   );
 };
