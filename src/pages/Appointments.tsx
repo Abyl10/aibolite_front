@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import AppointmentsModal from '../components/UI/Modals/AppointmentsModal';
 import { Search } from '../components/UI/Search';
 import ReusableTable from '../components/UI/Tables/ReusableTable';
@@ -25,6 +25,12 @@ const Appointments = () => {
     });
   }, []);
 
+  const getAppointment = useCallback(() => {
+    getAppointments().then((res) => {
+      setAppointments(res);
+    });
+  }, []);
+
   return (
     <main>
       <div className={classes['appointments']}>
@@ -32,7 +38,11 @@ const Appointments = () => {
         <div className={classes['appointments__search']}>
           <Search onChange={setQuery} />
         </div>
-        <AppointmentsModal opened={opened} handleToggle={handleToggle} />
+        <AppointmentsModal
+          opened={opened}
+          handleToggle={handleToggle}
+          reloadData={getAppointment}
+        />
       </div>
 
       <ReusableTable

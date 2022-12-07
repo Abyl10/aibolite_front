@@ -1,7 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import InputMask from 'react-input-mask';
-import { IAppointment } from '../../../ts/types';
-import classes from './PatientModal.scss';
+import { IDoctor, IUser, Role } from '../../../ts/types';
 import { useState } from 'react';
 import {
   Modal,
@@ -20,6 +19,9 @@ import { useForm } from '@mantine/form';
 import { useTranslations } from '../../../hooks/useTranslations';
 
 import { SpecializationsData } from '../../../consts/data';
+import { getDoctors } from '../../../requests/doctors';
+import { createAppointment } from '../../../requests/appointments';
+import { getUserProfile } from '../../../requests/user';
 
 const useStyles = createStyles((theme) => ({
   inOneRow: {
@@ -35,14 +37,17 @@ const useStyles = createStyles((theme) => ({
 interface IProps {
   opened: boolean;
   handleToggle: (val: boolean) => void;
+  reloadData: () => void;
 }
 
-const AppointmentsModal: React.FC<IProps> = ({ opened, handleToggle }) => {
+const AppointmentsModal: React.FC<IProps> = ({ opened, handleToggle, reloadData }) => {
   const { classes, cx } = useStyles();
   const { t } = useTranslations();
 
+  const [userProfile, setUserProfile] = useState<IUser>();
   const [success, setSuccess] = useState<string>('');
   const [error, setError] = useState<string>('');
+  const [doctors, setDoctors] = useState<IDoctor[]>([]);
   const form = useForm({
     initialValues: {
       name: '',
@@ -51,15 +56,45 @@ const AppointmentsModal: React.FC<IProps> = ({ opened, handleToggle }) => {
       doctor: '',
       doctor_specialization: '',
       phone: '',
+      time: '',
     },
   });
+
+  useEffect(() => {
+    getDoctors().then((res) => {
+      setDoctors(res);
+    });
+    getUserProfile().then((res) => {
+      setUserProfile(res);
+    });
+  }, []);
 
   const handleRegisterClick = () => {
     handleToggle(true);
   };
 
   const handleSubmitClick = () => {
-    return;
+    const { values } = form;
+    if (userProfile?.role === Role.PATIENT) {
+      const appointmentData = {
+        time: values.time,
+        doctor_id: values.doctor.id,
+        patient_id: userProfile?.id,
+      };
+      createAppointment(appointmentData).then((res) => {
+        setSuccess('Appointment created successfully');
+        reloadData();
+      });
+    } else {
+      setError('You are not a patient');
+    }
+  };
+
+  const handleOnClose = () => {
+    handleToggle(false);
+    setSuccess('');
+    setError('');
+    form && form.reset();
   };
 
   return (
@@ -73,7 +108,7 @@ const AppointmentsModal: React.FC<IProps> = ({ opened, handleToggle }) => {
         overlayOpacity={0.5}
         overlayBlur={1}
         opened={opened}
-        onClose={() => handleToggle(false)}
+        onClose={handleOnClose}
       >
         <form>
           <div className={classes.inOneRow}>
@@ -86,15 +121,22 @@ const AppointmentsModal: React.FC<IProps> = ({ opened, handleToggle }) => {
               hideControls
               {...form.getInputProps('name')}
             />
-            <TextInput
-              label={t('surname')}
-              placeholder="Your surname"
+            <Input.Wrapper
+              label="Contact Number"
               size="md"
               style={{ width: 345 }}
               required
-              hideControls
-              {...form.getInputProps('surname')}
-            />
+              {...form.getInputProps('phone')}
+            >
+              <Input
+                placeholder="Your phone"
+                size="md"
+                style={{ width: 345 }}
+                component={InputMask}
+                mask="+7 (999) 999-99-99"
+                {...form.getInputProps('phone')}
+              />
+            </Input.Wrapper>
           </div>
           <Space h="md"></Space>
           <div className={classes.inOneRow}>
@@ -118,13 +160,10 @@ const AppointmentsModal: React.FC<IProps> = ({ opened, handleToggle }) => {
               placeholder="Choose doctor"
               size="md"
               style={{ width: 345 }}
-              data={[
-                { value: 'dastan', label: 'Dastan' },
-                { value: 'meiirlan', label: 'Meiirlan' },
-                { value: 'shyngys', label: 'Shyngys' },
-                { value: 'denis', label: 'Denis' },
-                { value: 'abylay', label: 'Abylay' },
-              ]}
+              data={doctors.map((doctor) => ({
+                label: `${doctor.name} ${doctor.surname}`,
+                value: doctor,
+              }))}
               required
               transition="scale-y"
               transitionDuration={80}
@@ -148,22 +187,27 @@ const AppointmentsModal: React.FC<IProps> = ({ opened, handleToggle }) => {
               required
               {...form.getInputProps('date')}
             />
-            <Input.Wrapper
-              label="Contact Number"
+            <Select
+              label={t('Time')}
+              placeholder="Choose Time"
               size="md"
               style={{ width: 345 }}
+              data={[
+                { label: '09:00 - 09:30', value: '09:00 - 09:30' },
+                { label: '09:30 - 10:00', value: '10:00 - 10:30' },
+                { label: '10:30 - 11:00', value: '11:00 - 11:30' },
+                { label: '11:30 - 12:00', value: '12:00 - 12:30' },
+                { label: '12:30 - 13:00', value: '14:00 - 14:30' },
+                { label: '14:30 - 15:00', value: '15:00 - 15:30' },
+                { label: '15:00 - 16:00', value: '16:00 - 16:30' },
+                { label: '16:00 - 17:00', value: '17:00 - 17:30' },
+              ]}
               required
-              {...form.getInputProps('phone')}
-            >
-              <Input
-                placeholder="Your phone"
-                size="md"
-                style={{ width: 345 }}
-                component={InputMask}
-                mask="+7 (999) 999-99-99"
-                {...form.getInputProps('phone')}
-              />
-            </Input.Wrapper>
+              transition="scale-y"
+              transitionDuration={80}
+              transitionTimingFunction="ease"
+              {...form.getInputProps('time')}
+            />
           </div>
 
           <Space h="md"></Space>

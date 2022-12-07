@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import CustomTableUser from '../components/UI/Tables/CustomTableUser';
-import { getPatient, getPatients } from '../requests/patients';
+import { getPatients } from '../requests/patients';
 import { IPatient } from '../ts/types';
 
 const Patients = () => {

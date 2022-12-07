@@ -211,4 +211,40 @@ export const TRANSLATIONS: ITranslation[] = [
     ru: 'Пациент',
     en: 'Patient',
   },
+  {
+    key: 'id_number',
+    kz: 'ID номер',
+    ru: 'ID номер',
+    en: 'ID number',
+  },
+  {
+    key: 'blood_group',
+    kz: 'Қан группасы',
+    ru: 'Группа крови',
+    en: 'Blood group',
+  },
+  {
+    key: 'marital_status',
+    ru: 'Семейное положение',
+    kz: 'Қоғамдық құралы',
+    en: 'Marital status',
+  },
+  {
+    key: 'birth_date',
+    ru: 'Дата рождения',
+    kz: 'Туған күні',
+    en: 'Birth date',
+  },
+  {
+    key: 'edit',
+    ru: 'Редактировать',
+    kz: 'Өзгерту',
+    en: 'Edit',
+  },
+  {
+    key: 'cancel',
+    ru: 'Отмена',
+    kz: 'Болдырмау',
+    en: 'Cancel',
+  },
 ];

@@ -29,6 +29,7 @@ export interface IPatient {
   registration_date?: string;
   birth_date: string;
   phone: string;
+  password: string;
 }
 
 export interface IDoctor {

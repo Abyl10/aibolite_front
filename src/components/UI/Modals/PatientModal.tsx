@@ -176,8 +176,11 @@ const PatientModal: React.FC<IProps> = ({ opened, handleToggle }) => {
         month: '2-digit',
         day: '2-digit',
       }),
-      phone: phone,
+      //regex for phone number with + symbol
+      phone: '+' + phone.replace(/\D/g, ''),
+      password: password,
     };
+    console.log(data.phone);
     createPatient(data)
       .then((res) => {
         if (res) {
@@ -306,44 +309,20 @@ const PatientModal: React.FC<IProps> = ({ opened, handleToggle }) => {
               style={{ width: 230 }}
               data={[
                 {
-                  value: 'o+',
-                  label: 'O+',
-                  group: 'RhD Positive',
+                  value: 1,
+                  label: 1,
                 },
                 {
-                  value: 'a+',
-                  label: 'A+',
-                  group: 'RhD Positive',
+                  value: 2,
+                  label: 2,
                 },
                 {
-                  value: 'b+',
-                  label: 'B+',
-                  group: 'RhD Positive',
+                  value: 3,
+                  label: 3,
                 },
                 {
-                  value: 'ab+',
-                  label: 'AB+',
-                  group: 'RhD Positive',
-                },
-                {
-                  value: 'o-',
-                  label: 'O-',
-                  group: 'RhD Negative',
-                },
-                {
-                  value: 'a-',
-                  label: 'A-',
-                  group: 'RhD Negative',
-                },
-                {
-                  value: 'b-',
-                  label: 'B-',
-                  group: 'RhD Negative',
-                },
-                {
-                  value: 'ab-',
-                  label: 'AB-',
-                  group: 'RhD Negative',
+                  value: 4,
+                  label: 4,
                 },
               ]}
               required

@@ -16,4 +16,4 @@ export const deletePatient = (id: number): Promise<void> =>
   api.delete(`${baseUrl}/patients/${id}`).then((res) => res.data);
 
 export const updatePatient = (id: number, patient: IPatient): Promise<IPatient> =>
-  api.patch(`${baseUrl}/patients/${id}`, patient).then((res) => res.data);
+  api.put(`${baseUrl}/patients/${id}`, patient).then((res) => res.data);

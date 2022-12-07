@@ -42,9 +42,6 @@ const ReusableTableWithSearch: React.FC<IProps> = ({ data, headers, nameofHeader
 
   return (
     <main className={cx['table']}>
-      {/* <div className={cx['table__header']}>
-        <h2 className={cx['table__title']}>{t(nameofHeader)}</h2>
-      </div> */}
       <Table highlightOnHover fontSize={'xs'} className={classes.tableHeader}>
         <thead>
           <tr>

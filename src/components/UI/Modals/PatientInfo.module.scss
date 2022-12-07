@@ -5,3 +5,11 @@
   background-color: var(--color-white);
   padding: 3rem 3rem 2rem 3rem;
 }
+
+.button {
+  display: flex;
+  align-items: center;
+  margin-top: 2rem;
+  justify-content: center;
+  gap: 2rem;
+}
