@@ -1,9 +1,8 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { ROUTES } from './consts/routes';
 import { Auth } from './pages/Auth';
 import { Layout } from './components/layout/Layout';
-import { useUserContext } from './contexts/UserContext';
 import { Redirect } from './pages/Redirect';
 import { Register } from './pages/Register';
 import { ForgotPassword } from './pages/ForgotPassword';
